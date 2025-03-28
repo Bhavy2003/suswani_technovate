@@ -125,6 +125,14 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+doctype_js = {
+    "Purchase Invoice": "public/js/purchase_invoice.js",
+    "Sales Invoice": "public/js/sales_invoice.js",
+    "Sales Invoice Correction": "public/js/sales_invoice_correction.js",
+    "Purchase Receipt": "public/js/purchase_receipt.js",
+    "Purchase Invoice Correction": "public/js/purchase_invoice_correction.js",
+              }
+
 # DocType Class
 # ---------------
 # Override standard doctype classes
@@ -165,6 +173,34 @@ app_license = "mit"
 # 		"suswani_technovate.tasks.monthly"
 # 	],
 # }
+
+# doc_events = {
+# 	"Purchase Invoice Correction": {
+#         "on_submit": "nisus_technovate.private.py.purchase_invoice.create_correction_journal_entry"
+#     }
+
+ 
+  
+#  "Sales Invoice Correction": {
+# 		"on_submit": "nisus_technovate.private.py.purchase_order.on_submit"
+# 	}
+# }
+
+doc_events = {
+    "Purchase Invoice Correction": {
+        "on_submit": "nisus_technovate.private.py.purchase_invoice_correction.on_submit",
+        "before_save": "nisus_technovate.private.py.purchase_invoice_correction.before_save",
+        "after_cancel": "nisus_technovate.private.py.purchase_invoice_correction.after_cancel"
+    },
+    "Sales Invoice Correction": {
+        "on_submit": "nisus_technovate.private.py.sales_invoice_correction.on_submit",
+        "before_save": "nisus_technovate.private.py.sales_invoice_correction.before_save",
+        "after_cancel": "nisus_technovate.private.py.sales_invoice_correction.after_cancel"
+    }
+}
+
+
+
 
 # Testing
 # -------
